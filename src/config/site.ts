@@ -31,6 +31,7 @@ export const STATS = [
   {
     value: 0,
     suffix: '%',
+    prefix: '',
     label: 'of tourism revenue that enters local communities in developing countries, leaves',
     commitment: "We're committed to changing this number",
   },
@@ -44,6 +45,7 @@ export const STATS = [
   {
     value: 0,
     suffix: '%',
+    prefix: '',
     label: 'CAGR of the community based tourism market',
     commitment: 'Digitizing a market growing 3x faster than the general travel market',
   },
