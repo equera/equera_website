@@ -17,9 +17,11 @@ const currentPath = Astro.url.pathname;
 
       <div class="hidden md:flex items-center space-x-1">
         {NAVIGATION.map((item) => {
+          // Only \"Home\" should be marked active on the homepage;
+          // section links (/#problem, etc.) stay neutral.
           const isActive =
-            currentPath === item.href ||
-            (item.href !== '/' && currentPath.startsWith(item.href));
+            item.href === '/' ? currentPath === '/' : currentPath === item.href;
+
           return (
             <a
               href={item.href}

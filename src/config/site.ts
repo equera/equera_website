@@ -5,7 +5,7 @@ export const SITE = {
   url: 'https://equera.ai',
   ogImage: '/og-image.jpg',
   links: {
-    linkedin: 'https://www.linkedin.com/company/equera',
+    linkedin: 'https://www.linkedin.com/company/equeratravel',
     instagram: 'https://www.instagram.com/danielle_in_de',
   },
   contact: {
@@ -21,10 +21,10 @@ export const SITE = {
 
 export const NAVIGATION = [
   { name: 'Home', href: '/' },
-  { name: 'The Problem', href: '#problem' },
-  { name: 'The Solution', href: '#solution' },
-  { name: 'Features', href: '#features' },
-  { name: 'Meet the Founder', href: '#founder' },
+  { name: 'The Problem', href: '/#problem' },
+  { name: 'The Solution', href: '/#solution' },
+  { name: 'Features', href: '/#features' },
+  { name: 'Meet the Founder', href: '/#founder' },
 ] as const;
 
 export const STATS = [
