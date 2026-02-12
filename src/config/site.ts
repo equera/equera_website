@@ -29,25 +29,25 @@ export const NAVIGATION = [
 
 export const STATS = [
   {
-    value: 0,
+    value: 90,
     suffix: '%',
     prefix: '',
-    label: 'of tourism revenue that enters local communities in developing countries, leaves',
-    commitment: "We're committed to changing this number",
+    label: 'of travelers want to travel like locals',
+    commitment: 'yet most community-based tourism remains offline',
   },
   {
-    value: 0,
-    suffix: 'k',
+    value: 448,
+    suffix: 'B',
     prefix: '$',
-    label: 'potential annual per capita increase in income when locals are in charge',
-    commitment: 'Growing local and community based tourism is the answer',
+    label: 'offline market of community-based tourism supply',
+    commitment: 'that tour operators can\'t access',
   },
   {
-    value: 0,
+    value: 53,
     suffix: '%',
     prefix: '',
-    label: 'CAGR of the community based tourism market',
-    commitment: 'Digitizing a market growing 3x faster than the general travel market',
+    label: 'of travelers want to leave places better than they found them',
+    commitment: "yet travel agents are drowning in greenwashed supply, with no way to verify true impact",
   },
 ] as const;
 
