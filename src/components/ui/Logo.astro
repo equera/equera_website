@@ -1,0 +1,24 @@
+---
+import { BRAND } from '@/config/brand';
+
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+}
+
+const { class: className = '', size = 'md' } = Astro.props;
+
+const sizeClasses = {
+  sm: 'h-8',
+  md: 'h-12',
+  lg: 'h-16',
+  xl: 'h-20',
+};
+---
+
+<img
+  src={BRAND.logo.url}
+  alt={BRAND.logo.alt}
+  class={`${sizeClasses[size]} w-auto object-contain ${className}`}
+  loading="eager"
+/>

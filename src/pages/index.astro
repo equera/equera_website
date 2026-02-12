@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Problem from '@/components/sections/Problem.astro';
+import Solution from '@/components/sections/Solution.astro';
+import Features from '@/components/sections/Features.astro';
+import Founder from '@/components/sections/Founder.astro';
+---
+
+<BaseLayout>
+  <Hero />
+  <Problem />
+  <Solution />
+  <Features />
+  <Founder />
+</BaseLayout>
+
+<script>
+  import { setupScrollAnimations, setupParallax, setupImageReveals } from '@/utils/animations';
+  import Lenis from 'lenis';
+
+  // Initialize smooth scroll
+  if (typeof window !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Setup all animations
+    setupScrollAnimations();
+    setupParallax();
+    setupImageReveals();
+  }
+</script>

@@ -1,0 +1,112 @@
+---
+import { NAVIGATION, SITE } from '@/config/site';
+import Logo from '@/components/ui/Logo.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200/50 transition-all duration-300"
+>
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href="/" class="flex items-center space-x-3 group">
+        <Logo size="md" class="transition-transform group-hover:scale-105" />
+      </a>
+
+      <div class="hidden md:flex items-center space-x-1">
+        {NAVIGATION.map((item) => {
+          const isActive =
+            currentPath === item.href ||
+            (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+                isActive
+                  ? 'text-primary-600 bg-primary-50'
+                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+              }`}
+            >
+              {item.name}
+            </a>
+          );
+        })}
+        <a
+          href="/contact"
+          class="px-6 py-2 text-sm font-semibold text-white bg-primary-500 rounded-lg hover:bg-primary-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+        >
+          Contact
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg text-gray-700 hover:text-primary-600 hover:bg-gray-100 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4 space-y-1">
+      {NAVIGATION.map((item) => (
+        <a
+          href={item.href}
+          class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors"
+        >
+          {item.name}
+        </a>
+      ))}
+      <a
+        href="/contact"
+        class="block px-4 py-3 text-base font-semibold text-white bg-primary-500 rounded-lg hover:bg-primary-600 transition-colors text-center"
+      >
+        Contact
+      </a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Header scroll effect
+  if (typeof window !== 'undefined') {
+    const header = document.getElementById('header');
+    if (header) {
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+          header.classList.add('shadow-lg');
+          header.classList.remove('bg-white/80');
+          header.classList.add('bg-white/95');
+        } else {
+          header.classList.remove('shadow-lg');
+          header.classList.remove('bg-white/95');
+          header.classList.add('bg-white/80');
+        }
+        lastScroll = currentScroll;
+      });
+    }
+  }
+</script>
