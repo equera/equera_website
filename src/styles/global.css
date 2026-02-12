@@ -8,8 +8,9 @@
   }
 
   body {
-    @apply bg-white text-gray-900 antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #2A1D31;
+    font-family: 'Lexend', 'Inter', system-ui, -apple-system, sans-serif;
+    @apply antialiased;
   }
 
   * {
@@ -37,9 +38,10 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  /* Gradient text */
+  /* Gradient text (primary #FE5733) */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, #FE5733, #ed3d1a);
   }
 
   /* Smooth transitions */
@@ -94,22 +96,22 @@ html.lenis {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #f97316, #ea580c);
+  background: linear-gradient(to bottom, #FE5733, #ed3d1a);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #ea580c, #c2410c);
+  background: linear-gradient(to bottom, #ed3d1a, #c82d0f);
 }
 
-/* Selection color */
+/* Selection color (primary #FE5733) */
 ::selection {
-  background-color: rgba(249, 115, 22, 0.3);
-  color: #1f2937;
+  background-color: rgba(254, 87, 51, 0.25);
+  color: #2A1D31;
 }
 
 /* Focus styles */
 *:focus-visible {
-  outline: 2px solid #f97316;
+  outline: 2px solid #FE5733;
   outline-offset: 2px;
 }

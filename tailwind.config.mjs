@@ -4,37 +4,44 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Primary orange brand color
+        // Primary (logo) #FE5733 + scale for UI states
         primary: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
+          DEFAULT: '#FE5733',
+          50: '#fff0ed',
+          100: '#ffddd6',
+          200: '#ffc4b8',
+          300: '#ffa08a',
+          400: '#fe7354',
+          500: '#FE5733',
+          600: '#ed3d1a',
+          700: '#c82d0f',
+          800: '#a52810',
+          900: '#882714',
         },
-        // Accent colors
-        accent: {
-          blue: '#0ea5e9',
-          green: '#10b981',
-          purple: '#8b5cf6',
+        // Brand palette (secondary and supporting)
+        brand: {
+          black: '#000000',
+          'dark-purple': '#2A1D31',
+          'charcoal-violet': '#382743',
+          'blue-purple': '#927BFA',
+          lavender: '#A490FF',
+          'light-grey': '#ECECEC',
+          'off-white': '#F8F9F9',
+          white: '#FFFFFF',
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        body: ['Lexend', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        glow: '0 0 20px rgba(249, 115, 22, 0.3)',
-        'glow-lg': '0 0 40px rgba(249, 115, 22, 0.4)',
+        glow: '0 0 20px rgba(254, 87, 51, 0.3)',
+        'glow-lg': '0 0 40px rgba(254, 87, 51, 0.4)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-mesh': 'linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(14, 165, 233, 0.1) 100%)',
+        'gradient-mesh': 'linear-gradient(135deg, rgba(254, 87, 51, 0.1) 0%, rgba(146, 123, 250, 0.1) 100%)',
       },
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out',
