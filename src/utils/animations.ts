@@ -44,65 +44,28 @@ export const animateCounter = (
 export const setupScrollAnimations = () => {
   if (typeof window === 'undefined') return;
 
-  // Register ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
+  const elements = Array.from(
+    document.querySelectorAll<HTMLElement>('[data-animate]')
+  );
 
-  // Animate elements with data-animate attribute
-  const animateElements = document.querySelectorAll<HTMLElement>('[data-animate]');
-  
-  animateElements.forEach((element, index) => {
-    gsap.from(element, {
-      opacity: 0,
-      y: 60,
-      duration: 1,
-      ease: 'power3.out',
-      delay: index * 0.1,
-      scrollTrigger: {
-        trigger: element,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-        once: true,
-      },
-    });
-  });
+  if (!elements.length) return;
 
-  // Stagger animations for elements with data-stat-index
-  const statElements = document.querySelectorAll<HTMLElement>('[data-stat-index]');
-  if (statElements.length > 0) {
-    gsap.from(statElements, {
-      opacity: 0,
-      y: 40,
-      scale: 0.95,
-      duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.15,
-      scrollTrigger: {
-        trigger: statElements[0],
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-        once: true,
-      },
-    });
-  }
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: '0px 0px -10% 0px',
+    }
+  );
 
-  // Stagger animations for feature cards
-  const featureElements = document.querySelectorAll<HTMLElement>('[data-feature-index]');
-  if (featureElements.length > 0) {
-    gsap.from(featureElements, {
-      opacity: 0,
-      y: 40,
-      scale: 0.95,
-      duration: 0.8,
-      ease: 'power3.out',
-      stagger: 0.1,
-      scrollTrigger: {
-        trigger: featureElements[0],
-        start: 'top 80%',
-        toggleActions: 'play none none none',
-        once: true,
-      },
-    });
-  }
+  elements.forEach((el) => observer.observe(el));
 };
 
 // Parallax effect for images
