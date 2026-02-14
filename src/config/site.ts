@@ -24,7 +24,7 @@ export const NAVIGATION = [
   { name: 'The Problem', href: '/#problem' },
   { name: 'The Solution', href: '/#solution' },
   { name: 'Features', href: '/#features' },
-  { name: 'Meet the Founder', href: '/#founder' },
+  { name: 'Meet the Team', href: '/#team' },
 ] as const;
 
 export const STATS = [
