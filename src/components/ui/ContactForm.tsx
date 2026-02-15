@@ -47,22 +47,44 @@ export default function ContactForm() {
     },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
+  const onSubmit = async (
+    data: ContactFormData,
+    event?: React.BaseSyntheticEvent
+  ) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // TODO: Replace with actual API endpoint
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data),
-      // });
+      const form = event?.target as HTMLFormElement | undefined;
+      const botValue = form?.querySelector<HTMLInputElement>('[name="bot-field"]')?.value ?? '';
+      if (botValue) {
+        setSubmitStatus('success');
+        reset();
+        return;
+      }
 
-      // Simulate API call for now
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Build body for Netlify (application/x-www-form-urlencoded)
+      const params = new URLSearchParams();
+      params.set('form-name', 'contact-form-responses');
+      params.set('bot-field', botValue);
+      params.set('fullName', data.fullName);
+      params.set('email', data.email);
+      params.set('company', data.company);
+      params.set('role', data.role);
+      data.interests.forEach((value) => params.append('interests', value));
+      if (data.hearAbout) params.set('hearAbout', data.hearAbout);
+      if (data.message) params.set('message', data.message);
 
-      // if (!response.ok) throw new Error('Failed to send message');
+      const response = await fetch(
+        typeof window !== 'undefined' ? window.location.pathname || '/contact' : '/contact',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: params.toString(),
+        }
+      );
+
+      if (!response.ok) throw new Error('Failed to send message');
 
       setSubmitStatus('success');
       reset();
@@ -75,18 +97,10 @@ export default function ContactForm() {
   };
 
   return (
-    <form 
-      onSubmit={handleSubmit(onSubmit)} 
-      className="space-y-6"
-      name="contact-form-responses" 
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-    >
-      {/* Netlify hidden fields prevents spam */}
-      <input type="hidden" name="form-name" value="contact-form-responses" />
-      <p hidden>
-        <label>Don't fill this: <input name="bot-field" /></label>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+      {/* Honeypot for spam (keep hidden from users; we send its value in fetch) */}
+      <p hidden aria-hidden="true">
+        <label>Don't fill this: <input name="bot-field" tabIndex={-1} autoComplete="off" /></label>
       </p>
 
       {/* Full name */}

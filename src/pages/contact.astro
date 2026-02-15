@@ -20,6 +20,45 @@ import { SITE } from '@/config/site';
           </p>
         </div>
 
+        <!-- Hidden form so Netlify detects it at build time (same name/fields as React form) -->
+        <form
+          name="contact-form-responses"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          hidden
+        >
+          <input type="hidden" name="form-name" value="contact-form-responses" />
+          <input type="text" name="fullName" />
+          <input type="email" name="email" />
+          <input type="text" name="company" />
+          <select name="role">
+            <option value="Travel Agency">Travel Agency</option>
+            <option value="Tour Operator">Tour Operator</option>
+            <option value="DMC/Ground Handler">DMC/Ground Handler</option>
+            <option value="Lodge/Accommodation">Lodge/Accommodation</option>
+            <option value="Community-Based Tourism Organization">Community-Based Tourism Organization</option>
+            <option value="Tourism Board/Government">Tourism Board/Government</option>
+            <option value="Other">Other</option>
+          </select>
+          <input type="checkbox" name="interests" value="Sourcing community-based experiences" />
+          <input type="checkbox" name="interests" value="Distributing my products globally" />
+          <input type="checkbox" name="interests" value="Becoming a preferred partner" />
+          <input type="checkbox" name="interests" value="Tourism board partnership" />
+          <input type="checkbox" name="interests" value="General inquiry" />
+          <input type="checkbox" name="interests" value="Request a demo" />
+          <select name="hearAbout">
+            <option value="">Select an option</option>
+            <option value="Google search">Google search</option>
+            <option value="LinkedIn">LinkedIn</option>
+            <option value="Referral">Referral</option>
+            <option value="Conference/Event">Conference/Event</option>
+            <option value="Press/Media">Press/Media</option>
+            <option value="Other">Other</option>
+          </select>
+          <textarea name="message"></textarea>
+          <input type="text" name="bot-field" />
+        </form>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div data-animate>
             <h2 class="text-2xl font-bold text-brand-dark-purple mb-6">Get in Touch</h2>
