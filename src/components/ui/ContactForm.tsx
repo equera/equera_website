@@ -75,7 +75,19 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="space-y-6"
+      name="contact" 
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      {/* Netlify hidden fields prevents spam */}
+      <input type="hidden" name="form-name" value="contact" />
+      <p hidden>
+        <label>Don't fill this: <input name="bot-field" /></label>
+      </p>
+
       {/* Full name */}
       <div>
         <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
