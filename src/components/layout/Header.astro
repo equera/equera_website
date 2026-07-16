@@ -116,11 +116,13 @@ const currentPath = Astro.url.pathname;
       );
     }
 
-    // Scroll-spy: highlight the nav item for the section under the header
+    // Scroll-spy: highlight the nav item for the section under the header.
+    // 'cta' has no nav item; when it is the current section, no link is
+    // highlighted (otherwise "Meet the Team" would stay lit past its section).
     const spyLinks = Array.from(
       document.querySelectorAll<HTMLAnchorElement>('[data-spy]')
     );
-    const sections = [...new Set(spyLinks.map((l) => l.dataset.spy))]
+    const sections = [...new Set([...spyLinks.map((l) => l.dataset.spy), 'cta'])]
       .map((id) => (id ? document.getElementById(id) : null))
       .filter((s): s is HTMLElement => s !== null);
 

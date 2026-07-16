@@ -1,59 +1,58 @@
 ---
-const bullets = [
-  'Deploy our infrastructure to digitize and scale your own supply chain',
-  "Launch with supply you couldn't source on your own",
-  'Replace spreadsheets and WhatsApp chaos with one AI that runs your operations',
-  'Auto-generate impact reports as bookings come in',
-  'Give your local suppliers the tools to grow their digital skills and their quality of service',
+const capabilities = [
+  { lead: 'Deploy our infrastructure', rest: ' to digitize and scale your own supply chain' },
+  { lead: 'Launch with supply', rest: " you couldn't source on your own" },
+  { lead: 'Replace spreadsheets and WhatsApp chaos', rest: ' with one AI that runs your operations' },
+  { lead: 'Auto-generate impact reports', rest: ' as bookings come in' },
+  { lead: 'Give your local suppliers the tools', rest: ' to grow their digital skills and their quality of service' },
 ];
 ---
 
-<section
-  id="solution"
-  class="relative py-20 lg:py-32 bg-white overflow-hidden"
->
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-1/4 left-0 w-96 h-96 bg-primary-100/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-0 w-80 h-80 bg-accent-blue/10 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section id="solution" class="relative py-20 xl:py-24 bg-white overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 lg:mb-20" data-animate>
+      <div class="text-center mb-12 lg:mb-14" data-animate>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark-purple mb-4">
           Operators &amp; Destinations
         </h2>
         <p class="text-primary-600 font-semibold text-lg lg:text-xl mb-4">
           Your Supply, Our Tech
         </p>
-        <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
+        <div class="w-24 h-0.5 bg-primary-500 mx-auto"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <!-- Bullets (left) -->
-        <ul class="space-y-5 text-lg text-gray-700 leading-relaxed" data-animate>
-          {bullets.map((bullet) => (
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{bullet}</span>
-            </li>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-x-14 items-stretch">
+        <!-- Capability ledger (left) -->
+        <div
+          class="lg:col-span-5 border-y border-brand-dark-purple/10 divide-y divide-brand-dark-purple/10 flex flex-col lg:grid lg:grid-rows-5"
+          data-animate
+        >
+          {capabilities.map((cap) => (
+            <div class="group grid grid-cols-[2.5rem_1fr] gap-4 items-center py-5 lg:py-4 px-3 -mx-3 rounded-xl transition-colors duration-200 hover:bg-brand-dark-purple/[0.04]">
+              <img
+                src="/images/equera-mark.webp"
+                alt=""
+                class="w-6 h-6 transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+              <p class="font-body text-base lg:text-lg leading-relaxed text-brand-dark-purple/75">
+                <span class="font-display font-semibold text-brand-dark-purple">{cap.lead}</span>{cap.rest}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <!-- Laptop screenshots (right): layered so the pair reads as one composition -->
-        <div class="relative" data-animate>
+        <!-- Product proof (right): layered laptops -->
+        <div class="lg:col-span-7 self-center relative" data-animate>
           <img
-            src="/images/equera-operator-impact.webp"
-            alt="Equera community impact report with income and allocation breakdown"
+            src="/images/equera-operator-ai.webp"
+            alt="Equera AI Operator answering a sourcing question in the operator portal"
             class="w-[82%] ml-auto h-auto"
             loading="lazy"
           />
           <img
-            src="/images/equera-operator-ai.webp"
-            alt="Equera AI Operator answering a sourcing question in the operator portal"
+            src="/images/equera-operator-impact.webp"
+            alt="Equera community impact report with income and allocation breakdown"
             class="relative z-10 w-[88%] h-auto -mt-[34%] drop-shadow-2xl"
             loading="lazy"
           />

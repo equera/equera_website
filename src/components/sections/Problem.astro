@@ -16,7 +16,7 @@ import { STATS, STATS_SOURCES } from '@/config/site';
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 lg:mb-20" data-animate>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark-purple mb-4">
-          47% of Travel Experiences are still Booked Offline
+          The Supply Travelers Want is Nowhere to be Found
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
       </div>
@@ -38,13 +38,15 @@ import { STATS, STATS_SOURCES } from '@/config/site';
                 </svg>
               </div>
 
-              <div class="text-3xl lg:text-4xl xl:text-5xl tracking-tight font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-6">
+              <div class="text-4xl md:text-3xl lg:text-4xl xl:text-[3.4rem] xl:leading-tight tracking-tight font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-6">
                 {stat.value}
               </div>
 
-              <p class="text-gray-600 text-base lg:text-lg leading-relaxed">
-                {stat.description}
-              </p>
+              <div class="pt-6 border-t border-gray-100">
+                <p class="text-brand-dark-purple font-bold text-lg lg:text-xl leading-relaxed">
+                  {stat.description}
+                </p>
+              </div>
             </div>
 
             <!-- Decorative corner accent -->

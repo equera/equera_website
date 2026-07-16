@@ -9,8 +9,8 @@ export const SITE = {
     instagram: 'https://www.instagram.com/danielle_in_de',
   },
   contact: {
-    phone: '+1 (984) 386-0748',
-    address: '3089 Mavisbank Circle, Apex, NC, 27502, USA',
+    phone: '+1 (919) 924-8000',
+    address: '2093 Philadelphia Pike #4340, Claymont, DE 19703, USA',
     email: 'info@equera.ai',
   },
   company: {

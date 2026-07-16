@@ -1,59 +1,58 @@
 ---
-const bullets = [
-  'Digitize your products, and access worldwide distribution, without losing control of your operations',
-  'Onboard effortlessly through our AI-native WhatsApp flow',
-  'Convert inquiries into bookings and manage guest communications through tools you already use',
-  'Show your community the real impact of every booking, from school fees to savings funds',
+const capabilities = [
+  { lead: 'Digitize your products', rest: ', and access worldwide distribution, without losing control of your operations' },
+  { lead: 'Onboard effortlessly', rest: ' through our AI-native WhatsApp flow' },
+  { lead: 'Convert inquiries into bookings', rest: ' and manage guest communications through tools you already use' },
+  { lead: 'Show your community the real impact', rest: ' of every booking, from school fees to savings funds' },
 ];
 ---
 
-<section
-  id="features"
-  class="relative py-20 lg:py-32 bg-gradient-to-b from-gray-50 to-white overflow-hidden"
->
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-100/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-accent-blue/10 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section id="features" class="relative py-20 xl:py-24 bg-brand-off-white overflow-hidden">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16 lg:mb-20" data-animate>
+      <div class="text-center mb-12 lg:mb-14" data-animate>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark-purple mb-4">
           Community-based Tourism Organizations
         </h2>
         <p class="text-primary-600 font-semibold text-lg lg:text-xl mb-4">
           Go Global, Stay Local
         </p>
-        <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
+        <div class="w-24 h-0.5 bg-primary-500 mx-auto"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-        <!-- Bullets (right on desktop, first on mobile) -->
-        <ul class="order-1 lg:order-2 space-y-5 text-lg text-gray-700 leading-relaxed" data-animate>
-          {bullets.map((bullet) => (
-            <li class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{bullet}</span>
-            </li>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-x-14 items-stretch">
+        <!-- Capability ledger (right on desktop, first on mobile) -->
+        <div
+          class="order-1 lg:order-2 lg:col-span-5 border-y border-brand-dark-purple/10 divide-y divide-brand-dark-purple/10 flex flex-col lg:grid lg:grid-rows-4"
+          data-animate
+        >
+          {capabilities.map((cap) => (
+            <div class="group grid grid-cols-[2.5rem_1fr] gap-4 items-center py-5 lg:py-4 px-3 -mx-3 rounded-xl transition-colors duration-200 hover:bg-brand-dark-purple/[0.04]">
+              <img
+                src="/images/equera-mark.webp"
+                alt=""
+                class="w-6 h-6 transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+              <p class="font-body text-base lg:text-lg leading-relaxed text-brand-dark-purple/75">
+                <span class="font-display font-semibold text-brand-dark-purple">{cap.lead}</span>{cap.rest}
+              </p>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <!-- Phone screenshots (left on desktop) -->
-        <div class="order-2 lg:order-1 flex justify-center gap-4 sm:gap-6" data-animate>
+        <!-- Product proof (left on desktop): phones -->
+        <div class="order-2 lg:order-1 lg:col-span-7 self-center flex justify-center gap-4 sm:gap-6" data-animate>
           <img
             src="/images/equera-cbto-product.webp"
             alt="A walking safari experience listed on Equera, shown on a phone"
-            class="w-1/2 max-w-[260px] h-auto"
+            class="w-1/2 max-w-[280px] h-auto"
             loading="lazy"
           />
           <img
             src="/images/equera-cbto-whatsapp.webp"
             alt="Equera AI reading a flyer and asking onboarding questions over WhatsApp"
-            class="w-1/2 max-w-[260px] h-auto"
+            class="w-1/2 max-w-[280px] h-auto"
             loading="lazy"
           />
         </div>

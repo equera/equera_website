@@ -48,20 +48,32 @@ const logoImgClass =
   </div>
 </section>
 
+<style is:global>
+  #logo-marquee img.center-lit {
+    filter: none;
+    opacity: 1;
+  }
+</style>
+
 <script>
   // Auto-drifting logo strip that users can also drag. The track holds two
   // identical groups, so wrapping the offset at half the track width loops
   // seamlessly. Auto-drift pauses on hover/drag and under reduced motion
-  // (WCAG 2.2.2); dragging stays available in all cases.
+  // (WCAG 2.2.2); dragging stays available in all cases. The logo closest
+  // to the strip's center always gets the full-color hover treatment.
   const marquee = document.getElementById('logo-marquee');
   const track = document.getElementById('logo-marquee-track');
 
   if (marquee && track) {
     const SPEED = 0.4; // px per frame, ~24px/s at 60fps
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const logos = Array.from(track.querySelectorAll('img'));
 
     let offset = 0;
     let half = 0;
+    let viewMid = 0;
+    let logoCenters: number[] = [];
+    let litIndex = -1;
     let hovering = false;
     let dragging = false;
     let dragStartX = 0;
@@ -69,14 +81,43 @@ const logoImgClass =
 
     const measure = () => {
       half = track.scrollWidth / 2;
+      viewMid = marquee.clientWidth / 2;
+      // Track-space centers: subtracting the track rect cancels the current
+      // transform, so these stay valid as the strip moves.
+      const trackLeft = track.getBoundingClientRect().left;
+      logoCenters = logos.map((img) => {
+        const r = img.getBoundingClientRect();
+        return r.left - trackLeft + r.width / 2;
+      });
     };
     measure();
     window.addEventListener('resize', measure);
+    // Lazy-loaded logos have zero width until they arrive; re-measure as they do
+    logos.forEach((img) => {
+      if (!img.complete) img.addEventListener('load', measure, { once: true });
+    });
 
     const tick = () => {
       if (!dragging && !hovering && !reducedMotion.matches) offset += SPEED;
       if (half > 0) offset = ((offset % half) + half) % half;
       track.style.transform = `translateX(${-offset}px)`;
+
+      const mid = offset + viewMid;
+      let best = 0;
+      let bestDistance = Infinity;
+      logoCenters.forEach((center, i) => {
+        const distance = Math.abs(center - mid);
+        if (distance < bestDistance) {
+          bestDistance = distance;
+          best = i;
+        }
+      });
+      if (best !== litIndex) {
+        if (litIndex >= 0) logos[litIndex].classList.remove('center-lit');
+        logos[best].classList.add('center-lit');
+        litIndex = best;
+      }
+
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
