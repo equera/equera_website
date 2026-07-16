@@ -1,4 +1,10 @@
 ---
+const bullets = [
+  'Digitize your products, and access worldwide distribution, without losing control of your operations',
+  'Onboard effortlessly through our AI-native WhatsApp flow',
+  'Convert inquiries into bookings and manage guest communications through tools you already use',
+  'Show your community the real impact of every booking, from school fees to savings funds',
+];
 ---
 
 <section
@@ -15,95 +21,43 @@
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 lg:mb-20" data-animate>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark-purple mb-4">
-          The Missing Infrastructure Layer
+          Community-based Tourism Organizations
         </h2>
+        <p class="text-primary-600 font-semibold text-lg lg:text-xl mb-4">
+          Go Global, Stay Local
+        </p>
         <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
       </div>
 
-      <!-- Content + screenshots split layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <!-- Features list (left) -->
-        <div class="space-y-6 text-lg text-gray-700 leading-relaxed" data-animate>
-          <div>
-            <h3 class="text-xl lg:text-2xl font-bold text-primary-500 mb-1">
-              Effortless Onboarding
-            </h3>
-            <p>
-              Digitize offline supply at scale - from remote communities to your platform in days, not months
-            </p>
-          </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <!-- Bullets (right on desktop, first on mobile) -->
+        <ul class="order-1 lg:order-2 space-y-5 text-lg text-gray-700 leading-relaxed" data-animate>
+          {bullets.map((bullet) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
 
-          <div>
-            <h3 class="text-xl lg:text-2xl font-bold text-primary-500 mb-1">
-              Multi-Channel Distribution
-            </h3>
-            <p>
-              Connect to global travel demand through direct bookings, tour operators, and preferred DMC partnerships
-            </p>
-          </div>
-
-          <div>
-            <h3 class="text-xl lg:text-2xl font-bold text-primary-500 mb-1">
-              WhatsApp-Based Automation
-            </h3>
-            <p>
-              Convert inquiries into bookings, and manage guest communication through tools communities already use
-            </p>
-          </div>
-
-          <div>
-            <h3 class="text-xl lg:text-2xl font-bold text-primary-500 mb-1">
-              Centralized Operations
-            </h3>
-            <p>
-              Manage all product types - experiences, packages, accommodations - from one unified platform
-            </p>
-          </div>
-
-          <div>
-            <h3 class="text-xl lg:text-2xl font-bold text-primary-500 mb-1">
-              Real-Time Impact
-            </h3>
-            <p>
-              Track and manage the true impact your travel is having on your community
-            </p>
-          </div>
-        </div>
-
-        <!-- Screenshots (right): three phone-like cards, inspired by reference image -->
-        <div class="flex justify-center items-end self-center gap-0" data-animate>
-          <!-- Left card -->
-          <div class="hidden sm:block relative rounded-3xl overflow-hidden transform -rotate-12 translate-y-4 -z-10">
-            <img
-              src="/images/equera-screenshot2.webp"
-              alt="Equera platform - operations view"
-              class="w-full h-full"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Center card -->
-          <div class="relative rounded-3xl overflow-hidden">
-            <img
-              src="/images/equera-screenshot1.webp"
-              alt="Equera platform screenshot"
-              class="w-full h-full"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Right card -->
-          <div class="hidden sm:block relative rounded-3xl overflow-hidden transform rotate-12 translate-y-4 -z-10">
-            <img
-              src="/images/equera-screenshot2.webp"
-              alt="Equera platform - analytics view"
-              class="w-full h-full"
-              loading="lazy"
-            />
-          </div>
+        <!-- Phone screenshots (left on desktop) -->
+        <div class="order-2 lg:order-1 flex justify-center gap-4 sm:gap-6" data-animate>
+          <img
+            src="/images/equera-cbto-product.webp"
+            alt="A walking safari experience listed on Equera, shown on a phone"
+            class="w-1/2 max-w-[260px] h-auto"
+            loading="lazy"
+          />
+          <img
+            src="/images/equera-cbto-whatsapp.webp"
+            alt="Equera AI reading a flyer and asking onboarding questions over WhatsApp"
+            class="w-1/2 max-w-[260px] h-auto"
+            loading="lazy"
+          />
         </div>
       </div>
-
     </div>
   </div>
 </section>

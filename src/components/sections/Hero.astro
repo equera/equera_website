@@ -16,14 +16,15 @@ import { SITE } from '@/config/site';
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <!-- Content Side -->
       <div class="order-2 lg:order-1" data-animate>
-        <h2 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark-purple mb-6 leading-[1.1] tracking-tight">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-brand-dark-purple mb-6 leading-[1.1] tracking-tight">
           <span class="block bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
-            Infrastructure for the social tourism revolution
+            The AI Operating System for Experience-Led Travel
           </span>
-        </h2>
+        </h1>
 
         <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-lg">
-          Radically changing the economics of local and community based tourism through innovative technology.
+          $140B of travel experiences are still booked offline.
+          <span class="block">Equera changes that.</span>
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 mb-12">
@@ -104,7 +105,6 @@ import { SITE } from '@/config/site';
           <!-- Overlapping card - bottom right -->
           <div
             class="absolute -bottom-6 -right-4 lg:-right-6 w-44 h-44 lg:w-52 lg:h-52 rounded-2xl overflow-hidden shadow-xl border-4 border-white transform rotate-6 hover:rotate-3 transition-transform duration-300 z-10"
-            data-parallax
           >
             <img
               src="/images/equera-hero2.webp"
@@ -152,17 +152,3 @@ import { SITE } from '@/config/site';
     </div>
   </div>
 </section>
-
-<script>
-  // Parallax effect for secondary image
-  if (typeof window !== 'undefined') {
-    const parallaxElement = document.querySelector('[data-parallax]');
-    if (parallaxElement) {
-      window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * 0.2;
-        (parallaxElement as HTMLElement).style.transform = `translateY(${rate}px) rotate(6deg)`;
-      });
-    }
-  }
-</script>

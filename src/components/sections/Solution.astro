@@ -1,4 +1,11 @@
 ---
+const bullets = [
+  'Deploy our infrastructure to digitize and scale your own supply chain',
+  "Launch with supply you couldn't source on your own",
+  'Replace spreadsheets and WhatsApp chaos with one AI that runs your operations',
+  'Auto-generate impact reports as bookings come in',
+  'Give your local suppliers the tools to grow their digital skills and their quality of service',
+];
 ---
 
 <section
@@ -15,82 +22,41 @@
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16 lg:mb-20" data-animate>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark-purple mb-4">
-          Rebuilding Travel from the Bottom Up
+          Operators &amp; Destinations
         </h2>
+        <p class="text-primary-600 font-semibold text-lg lg:text-xl mb-4">
+          Your Supply, Our Tech
+        </p>
         <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Image Side -->
-        <div class="order-2 lg:order-1 md:max-w-sm lg:max-w-sm xl:max-w-md mx-auto" data-animate>
-          <div class="relative">
-            <div class="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
-              <img
-                src="/images/equera-solution.webp"
-                alt="Equera platform solution for community-based tourism"
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-            </div>
-            
-            <!-- Decorative elements -->
-            <div class="absolute -top-6 -left-6 w-32 h-32 bg-primary-400/30 rounded-full blur-2xl -z-10"></div>
-            <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-accent-blue/20 rounded-full blur-2xl -z-10"></div>
-          </div>
-        </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <!-- Bullets (left) -->
+        <ul class="space-y-5 text-lg text-gray-700 leading-relaxed" data-animate>
+          {bullets.map((bullet) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-primary-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{bullet}</span>
+            </li>
+          ))}
+        </ul>
 
-        <!-- Content Side -->
-        <div class="order-1 lg:order-2" data-animate>
-          <div class="space-y-8">
-            <!-- Block 1 -->
-            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-              <!-- <p class="text-xs font-semibold tracking-[0.2em] uppercase text-primary-500 mb-3">
-                Block 1
-              </p> -->
-              <h3 class="text-2xl lg:text-3xl font-bold text-brand-dark-purple mb-2">
-                Travel Agencies, Tour Operators and Lodges
-              </h3>
-              <p class="text-primary-600 font-semibold mb-4">
-                Access Authentic Supply
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Source vetted community-experiences directly – or work with your existing DMC partners on our platform.
-              </p>
-            </div>
-
-            <!-- Block 2 -->
-            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-              <!-- <p class="text-xs font-semibold tracking-[0.2em] uppercase text-primary-500 mb-3">
-                Block 2
-              </p> -->
-              <h3 class="text-2xl lg:text-3xl font-bold text-brand-dark-purple mb-2">
-                DMCs &amp; Ground Handlers
-              </h3>
-              <p class="text-primary-600 font-semibold mb-4">
-                Power Your Sourcing
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Access vetted CBT supply and become a preferred distribution partner for authentic experiences.
-              </p>
-            </div>
-
-            <!-- Block 3 -->
-            <div class="bg-white/90 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-gray-200 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-              <!-- <p class="text-xs font-semibold tracking-[0.2em] uppercase text-primary-500 mb-3">
-                Block 3
-              </p> -->
-              <h3 class="text-2xl lg:text-3xl font-bold text-brand-dark-purple mb-2">
-                Community-based tourism organizations
-              </h3>
-              <p class="text-primary-600 font-semibold mb-4">
-                Go Global, Stay Local
-              </p>
-              <p class="text-gray-700 leading-relaxed">
-                Digitize your products and access worldwide distribution without losing control of your operations.
-              </p>
-            </div>
-          </div>
+        <!-- Laptop screenshots (right): layered so the pair reads as one composition -->
+        <div class="relative" data-animate>
+          <img
+            src="/images/equera-operator-impact.webp"
+            alt="Equera community impact report with income and allocation breakdown"
+            class="w-[82%] ml-auto h-auto"
+            loading="lazy"
+          />
+          <img
+            src="/images/equera-operator-ai.webp"
+            alt="Equera AI Operator answering a sourcing question in the operator portal"
+            class="relative z-10 w-[88%] h-auto -mt-[34%] drop-shadow-2xl"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

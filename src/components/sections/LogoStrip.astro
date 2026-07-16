@@ -1,0 +1,108 @@
+---
+import { LOGOS } from '@/config/site';
+
+const logoImgClass =
+  'grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300';
+---
+
+<section id="recognition" class="relative py-10 lg:py-12 bg-white border-y border-gray-100">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-center text-xs font-medium tracking-[0.2em] uppercase text-gray-400 mb-7">
+      Recognized by
+    </p>
+
+    <div
+      id="logo-marquee"
+      class="relative overflow-hidden max-w-5xl mx-auto cursor-grab select-none [touch-action:pan-y]"
+      data-animate
+    >
+      <!-- Edge fades -->
+      <div class="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+      <div id="logo-marquee-track" class="flex w-max will-change-transform">
+        <div class="flex items-center gap-x-14 lg:gap-x-20 pr-14 lg:pr-20">
+          {LOGOS.map((logo) => (
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class={`${logo.class} ${logoImgClass}`}
+              loading="lazy"
+              draggable="false"
+            />
+          ))}
+        </div>
+        <div class="flex items-center gap-x-14 lg:gap-x-20 pr-14 lg:pr-20" aria-hidden="true">
+          {LOGOS.map((logo) => (
+            <img
+              src={logo.src}
+              alt=""
+              class={`${logo.class} ${logoImgClass}`}
+              loading="lazy"
+              draggable="false"
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Auto-drifting logo strip that users can also drag. The track holds two
+  // identical groups, so wrapping the offset at half the track width loops
+  // seamlessly. Auto-drift pauses on hover/drag and under reduced motion
+  // (WCAG 2.2.2); dragging stays available in all cases.
+  const marquee = document.getElementById('logo-marquee');
+  const track = document.getElementById('logo-marquee-track');
+
+  if (marquee && track) {
+    const SPEED = 0.4; // px per frame, ~24px/s at 60fps
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    let offset = 0;
+    let half = 0;
+    let hovering = false;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartOffset = 0;
+
+    const measure = () => {
+      half = track.scrollWidth / 2;
+    };
+    measure();
+    window.addEventListener('resize', measure);
+
+    const tick = () => {
+      if (!dragging && !hovering && !reducedMotion.matches) offset += SPEED;
+      if (half > 0) offset = ((offset % half) + half) % half;
+      track.style.transform = `translateX(${-offset}px)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    marquee.addEventListener('mouseenter', () => (hovering = true));
+    marquee.addEventListener('mouseleave', () => (hovering = false));
+
+    marquee.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      dragStartX = e.clientX;
+      dragStartOffset = offset;
+      marquee.setPointerCapture(e.pointerId);
+      marquee.classList.remove('cursor-grab');
+      marquee.classList.add('cursor-grabbing');
+    });
+
+    marquee.addEventListener('pointermove', (e) => {
+      if (dragging) offset = dragStartOffset - (e.clientX - dragStartX);
+    });
+
+    const endDrag = () => {
+      dragging = false;
+      marquee.classList.remove('cursor-grabbing');
+      marquee.classList.add('cursor-grab');
+    };
+    marquee.addEventListener('pointerup', endDrag);
+    marquee.addEventListener('pointercancel', endDrag);
+  }
+</script>

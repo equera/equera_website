@@ -78,6 +78,13 @@
 }
 
 /* Smooth scroll with Lenis */
+/* Lenis only smooths vertical gestures; block horizontal overscroll so
+   trackpad swipes can't trigger browser back/forward navigation */
+html,
+body {
+  overscroll-behavior-x: none;
+}
+
 html.lenis {
   height: auto;
 }

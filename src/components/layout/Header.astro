@@ -17,18 +17,20 @@ const currentPath = Astro.url.pathname;
 
       <div class="hidden md:flex items-center space-x-1">
         {NAVIGATION.map((item) => {
-          // Only \"Home\" should be marked active on the homepage;
-          // section links (/#problem, etc.) stay neutral.
+          // Server-rendered fallback: "Home" active on the homepage. The
+          // scroll-spy script below takes over once the page is interactive.
           const isActive =
             item.href === '/' ? currentPath === '/' : currentPath === item.href;
+          const sectionId = item.href === '/' ? 'home' : item.href.replace('/#', '');
 
           return (
             <a
               href={item.href}
-              class={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 ${
+              data-spy={sectionId}
+              class={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:text-primary-600 hover:bg-gray-50 ${
                 isActive
                   ? 'text-primary-600 bg-primary-50'
-                  : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                  : 'text-gray-700'
               }`}
             >
               {item.name}
@@ -65,6 +67,7 @@ const currentPath = Astro.url.pathname;
       {NAVIGATION.map((item) => (
         <a
           href={item.href}
+          data-spy={item.href === '/' ? 'home' : item.href.replace('/#', '')}
           class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-lg transition-colors"
         >
           {item.name}
@@ -95,20 +98,50 @@ const currentPath = Astro.url.pathname;
   if (typeof window !== 'undefined') {
     const header = document.getElementById('header');
     if (header) {
-      let lastScroll = 0;
-      window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        if (currentScroll > 100) {
-          header.classList.add('shadow-lg');
-          header.classList.remove('bg-white/80');
-          header.classList.add('bg-white/95');
-        } else {
-          header.classList.remove('shadow-lg');
-          header.classList.remove('bg-white/95');
-          header.classList.add('bg-white/80');
+      window.addEventListener(
+        'scroll',
+        () => {
+          const currentScroll = window.pageYOffset;
+          if (currentScroll > 100) {
+            header.classList.add('shadow-lg');
+            header.classList.remove('bg-white/80');
+            header.classList.add('bg-white/95');
+          } else {
+            header.classList.remove('shadow-lg');
+            header.classList.remove('bg-white/95');
+            header.classList.add('bg-white/80');
+          }
+        },
+        { passive: true }
+      );
+    }
+
+    // Scroll-spy: highlight the nav item for the section under the header
+    const spyLinks = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('[data-spy]')
+    );
+    const sections = [...new Set(spyLinks.map((l) => l.dataset.spy))]
+      .map((id) => (id ? document.getElementById(id) : null))
+      .filter((s): s is HTMLElement => s !== null);
+
+    if (spyLinks.length && sections.length) {
+      let current = '';
+      const update = () => {
+        let active = sections[0].id;
+        for (const section of sections) {
+          if (section.getBoundingClientRect().top <= 120) active = section.id;
         }
-        lastScroll = currentScroll;
-      });
+        if (active === current) return;
+        current = active;
+        for (const link of spyLinks) {
+          const on = link.dataset.spy === active;
+          link.classList.toggle('text-primary-600', on);
+          link.classList.toggle('bg-primary-50', on);
+          link.classList.toggle('text-gray-700', !on);
+        }
+      };
+      window.addEventListener('scroll', update, { passive: true });
+      update();
     }
   }
 </script>

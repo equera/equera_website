@@ -1,5 +1,5 @@
 export const SITE = {
-  title: 'Equera - Radically changing the economics of local and community based tourism',
+  title: 'Equera - The AI Operating System for Experience-Led Travel',
   description:
     'The first platform making community-based tourism online bookable. A B2B SaaS connectivity platform bringing authentic, sustainable travel online.',
   url: 'https://equera.ai',
@@ -11,7 +11,7 @@ export const SITE = {
   contact: {
     phone: '+1 (984) 386-0748',
     address: '3089 Mavisbank Circle, Apex, NC, 27502, USA',
-    email: 'contact@equera.ai',
+    email: 'info@equera.ai',
   },
   company: {
     name: 'Equera, Inc.',
@@ -29,25 +29,50 @@ export const NAVIGATION = [
 
 export const STATS = [
   {
-    value: 90,
-    suffix: '%',
-    prefix: '',
-    label: 'of travelers want to travel like locals',
-    commitment: 'yet most community-based tourism remains offline',
+    value: '$4M-$21M',
+    description:
+      'Amount that large travel agencies ($350M-$1B+) spend annually on sourcing',
   },
   {
-    value: 448,
-    suffix: 'B',
-    prefix: '$',
-    label: 'offline market of community-based tourism supply',
-    commitment: 'that tour operators can\'t access',
+    value: '30-45%',
+    description:
+      '% of time teams spend sourcing experiences (which only deliver 15-25% of revenue)',
   },
   {
-    value: 53,
-    suffix: '%',
-    prefix: '',
-    label: 'of travelers want to leave places better than they found them',
-    commitment: "yet travel agents are drowning in greenwashed supply, with no way to verify true impact",
+    value: '75%',
+    description:
+      "% of travelers say they'd choose an experience that supports the local community, even if it costs more",
+  },
+] as const;
+
+export const STATS_SOURCES =
+  'Analysis & research: Phocuswright, Arival, ATTA Industry Snapshot, Intrepid Annual Report 2024, Audley Travel Companies House Filing 2024, Wakefield Research 2022';
+
+export const LOGOS = [
+  {
+    src: '/images/logos/techstars.webp',
+    alt: 'Techstars',
+    class: 'h-10 lg:h-12 w-auto',
+  },
+  {
+    src: '/images/logos/grace.webp',
+    alt: 'Grace Accelerate Female Entrepreneurship',
+    class: 'h-10 lg:h-12 w-auto',
+  },
+  {
+    src: '/images/logos/aws-startups.webp',
+    alt: 'AWS Startups',
+    class: 'h-14 lg:h-16 w-auto',
+  },
+  {
+    src: '/images/logos/braze-tech-equitable.webp',
+    alt: 'Braze Tech for an Equitable Future',
+    class: 'h-14 lg:h-16 w-auto',
+  },
+  {
+    src: '/images/logos/shortlisted-2025.webp',
+    alt: 'Shortlisted 2025',
+    class: 'h-16 lg:h-20 w-auto',
   },
 ] as const;
 

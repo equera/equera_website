@@ -1,29 +1,28 @@
 ---
-// const teamImages = [
-//   '/images/equera-founder1.avif',
-//   '/images/equera-founder2.avif',
-//   '/images/equera-founder3.avif',
-//   '/images/equera-founder4.avif',
-// ];
-
 const team = [
   {
     name: 'Danielle Finch',
-    role: 'Co-founder & CEO',
-    bio: '14 years scaling tech across 170 countries (GE, Michelin, HomeToGo). Built the first prototype solo, then found the right team to make it real.',
-    fun: "Also: I'm the team's unofficial cameraman and have been known to misplace my side bag on several community visits",
+    role: 'Co-Founder & CEO',
+    bio: '14 years scaling tech across 170 countries, including GE, Michelin, and HomeToGo.',
+    fun: 'Also: despite being organized, manages to leave something behind at least once a trip.',
+  },
+  {
+    name: 'Emmanuel Annor',
+    role: 'Co-Founder & CTO',
+    bio: 'MSc from Carnegie Mellon. Spent his career building AI features that digitize offline economies, from rural farmers to remote tourism operators.',
+    fun: 'Also: sees himself as an artist, although his drawing skills strongly disagree.',
   },
   {
     name: 'Rogers Nasasira',
     role: 'Business Operations Lead',
-    bio: '7 years leading travel operations in Uganda. Former member of Travolution global CBTO network. The team\'s driver—literally and figuratively.',
-    fun: "I've navigated potholes, elephants on the road, and am the team's official Herdsman",
+    bio: '7 years leading travel operations in Uganda, formerly with the Travolution global CBTO network.',
+    fun: "Also: the team's official Herdsman, having navigated potholes and elephants on the road.",
   },
   {
     name: 'Sabiiti Fenekansi',
     role: 'Training Manager',
-    bio: 'Founder of Kitara Foundation for Regional Tourism. 10 years developing sustainable tourism curriculum. Found through a Google search (yes, really).',
-    fun: "I'm the team storyteller who has a passion for hiking, working with communities, and making connections everywhere we go",
+    bio: 'Founder of Kitara Foundation for Regional Tourism, with 10 years developing sustainable tourism curriculum.',
+    fun: 'Also: the team storyteller, always making connections wherever we go.',
   },
 ];
 ---
@@ -46,29 +45,29 @@ const team = [
         <div class="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"></div>
       </div>
 
-      <!-- Story: How a Google Maps accident became a mission (with team photo) -->
+      <!-- Founder story (with founders photo) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-16 lg:mb-20" data-animate>
         <div class="order-2 lg:order-1">
-          <h3 class="text-2xl lg:text-3xl font-bold text-primary-500 mb-6">
-            How a Google Maps accident became a mission
-          </h3>
           <div class="space-y-5 text-lg text-gray-700 leading-relaxed">
             <p>
-              In 2024, <strong class="text-brand-dark-purple">Danielle</strong> stumbled upon a community-based tourism organization on Google Maps during a trip through Malaysian Borneo. Despite years working in travel tech and traveling the world, she'd never heard the term "community-based tourism" before. That accidental stay became the best travel experience of her life.
+              In 2024, Co-Founder and CEO <strong class="text-brand-dark-purple">Danielle</strong> discovered community-based tourism in Malaysian Borneo. She had the time of her life and discovered an industry nobody was building for; she subsequently left her job at one of Europe's leading travel tech companies to fix it.
             </p>
             <p>
-              She went down the rabbit hole—literally googling "what is community-based tourism"—and realized just how overlooked these organizations are in the industry. She quit her job and never looked back.
+              One year later, she was on a bus in Rwanda and sat next to a fellow founder who told her about Norrsken House Kigali, one of Africa's leading innovation hubs. Norrsken is how she found Co-Founder and CTO <strong class="text-brand-dark-purple">Emmanuel</strong>.
             </p>
             <p>
-              Fast forward to 2025. Armed with a conference ticket and a prototype, Danielle landed in Entebbe for POATE. There, she met <strong class="text-brand-dark-purple">Rogers</strong>—connected through a mutual contact—who brought 7 years of leading travel operations in Uganda. She also found <strong class="text-brand-dark-purple">Sabiiti</strong> through a random Google search. What started as a one-day meetup turned into a multi-day road trip, and the decision to form a team and launch our pilot.
+              The two clicked from their very first meeting. Emmanuel has his master's from Carnegie Mellon and spent the first five years of his career building remote-first applications for 70,000+ farmers across Africa and Asia. Danielle spent 10 years in enterprise digitization for global brands before moving to HomeToGo, where she ran customer operations for half a million travelers a year and led teams that beat Airbnb, Booking.com, Vacasa and Vrbo for best customer experience in the industry.
+            </p>
+            <p>
+              Our collective experience, remote-first tech for farmers with no connectivity and enterprise operations for half a million travelers a year, is exactly what lets us build for both ends of this problem. The same infrastructure that onboards a CBTO in the hills of Uganda also runs the operations for the world's biggest travel companies.
             </p>
           </div>
         </div>
         <div class="order-1 lg:order-2">
           <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
             <img
-              src="/images/equera-team1.webp"
-              alt="Equera team"
+              src="/images/equera-founders.webp"
+              alt="Equera co-founders Danielle Finch and Emmanuel Annor"
               class="w-full aspect-[4/3] object-cover"
               loading="lazy"
             />
@@ -77,15 +76,15 @@ const team = [
       </div>
 
       <!-- Team member cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 mb-16 lg:mb-20">
-        {team.map((member, index) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-10 mb-16 lg:mb-20">
+        {team.map((member) => (
           <div
             class="bg-white rounded-2xl p-6 lg:p-8 border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
             data-animate
           >
-            <h4 class="text-xl font-bold text-brand-dark-purple mb-1">
+            <h3 class="text-xl font-bold text-brand-dark-purple mb-1">
               {member.name}
-            </h4>
+            </h3>
             <p class="text-primary-500 font-semibold text-sm mb-4">
               {member.role}
             </p>
@@ -99,26 +98,24 @@ const team = [
         ))}
       </div>
 
+      <!-- Team photo -->
+      <div class="max-w-4xl mx-auto mb-16 lg:mb-20" data-animate>
+        <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-black/5">
+          <img
+            src="/images/equera-team-table.webp"
+            alt="The Equera team working together around a table"
+            class="w-full h-auto object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
       <!-- Mission closing -->
       <div class="max-w-4xl mx-auto text-center" data-animate>
         <p class="text-lg lg:text-xl text-gray-700 leading-relaxed">
           We span inbound and outbound markets, tech and tourism, two continents. United by one mission: <strong class="text-brand-dark-purple">to restore equity in travel by building infrastructure that works for everyone, not just the 1%.</strong>
         </p>
       </div>
-
-      <!-- Optional: image strip from founder assets -->
-      <!-- <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto" data-animate>
-        {teamImages.map((image, index) => (
-          <div class="relative overflow-hidden rounded-xl shadow-lg aspect-[4/3]">
-            <img
-              src={image}
-              alt={`Equera team and journey ${index + 1}`}
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              loading="lazy"
-            />
-          </div>
-        ))}
-      </div> -->
     </div>
   </div>
 </section>
