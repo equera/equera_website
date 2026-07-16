@@ -29,24 +29,23 @@ export const NAVIGATION = [
 
 export const STATS = [
   {
-    value: '$4M-$21M',
-    description:
-      'Amount that large travel agencies ($350M-$1B+) spend annually on sourcing',
+    value: '90%',
+    description: '% of travelers that want to experience life like a local',
   },
   {
-    value: '30-45%',
+    value: '70%',
     description:
-      '% of time teams spend sourcing experiences (which only deliver 15-25% of revenue)',
+      "% of travelers that say they'd choose an experience that supports the local community, even if it costs more",
   },
   {
-    value: '75%',
+    value: '53%',
     description:
-      "% of travelers say they'd choose an experience that supports the local community, even if it costs more",
+      "% of travelers care about the impact on people - the same amount that care about travel's impact on the planet",
   },
 ] as const;
 
 export const STATS_SOURCES =
-  'Analysis & research: Phocuswright, Arival, ATTA Industry Snapshot, Intrepid Annual Report 2024, Audley Travel Companies House Filing 2024, Wakefield Research 2022';
+  'Analysis & Research: GetYourGuide 2023, Booking.com 2025';
 
 export const LOGOS = [
   {
