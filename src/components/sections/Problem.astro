@@ -38,7 +38,10 @@ import { STATS, STATS_SOURCES } from '@/config/site';
                 </svg>
               </div>
 
-              <div class="text-4xl md:text-3xl lg:text-4xl xl:text-[3.4rem] xl:leading-tight tracking-tight font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-6">
+              <div
+                class="text-4xl md:text-3xl lg:text-4xl xl:text-[3.4rem] xl:leading-tight tracking-tight tabular-nums font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-6"
+                data-stat-value={stat.value}
+              >
                 {stat.value}
               </div>
 
@@ -61,3 +64,46 @@ import { STATS, STATS_SOURCES } from '@/config/site';
     </div>
   </div>
 </section>
+
+<script>
+  // Count-up for the stat values. Values are strings with one or more
+  // numbers in them ("$4M-$21M"), so every numeric token animates from 0
+  // to its target while the surrounding characters stay fixed.
+  const statEls = document.querySelectorAll<HTMLElement>('[data-stat-value]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (statEls.length && !reducedMotion.matches) {
+    const DURATION = 1600;
+
+    const animate = (el: HTMLElement, finalText: string) => {
+      const tokens = finalText.split(/(\d+)/);
+      const targets = tokens.map((t) => (/^\d+$/.test(t) ? parseInt(t, 10) : null));
+      const start = performance.now();
+
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - start) / DURATION);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = tokens
+          .map((t, i) => (targets[i] === null ? t : String(Math.round((targets[i] as number) * eased))))
+          .join('');
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = finalText;
+      };
+      requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          obs.unobserve(entry.target);
+          const el = entry.target as HTMLElement;
+          animate(el, el.dataset.statValue || el.textContent || '');
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    statEls.forEach((el) => observer.observe(el));
+  }
+</script>
