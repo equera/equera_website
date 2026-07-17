@@ -33,7 +33,7 @@ export const STATS = [
     description: '% of travelers that want to experience life like a local',
   },
   {
-    value: '70%',
+    value: '75%',
     description:
       "% of travelers that say they'd choose an experience that supports the local community, even if it costs more",
   },
