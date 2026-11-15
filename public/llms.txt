@@ -1,0 +1,23 @@
+# Equera
+
+> Equera makes community-based tourism bookable online. Its catalogue lists stays, experiences and multi-day trips run by community hosts around the world, each with a public page showing price, what is included, location and reviews.
+
+## Catalogue
+
+- [All listings](https://portal.equera.ai/products): stays, experiences and multi-day trips, filterable by country
+- [Experiences](https://portal.equera.ai/experiences): activities led by community hosts
+- [Catalogue sitemap](https://portal.equera.ai/sitemap.xml): every public listing page
+
+## For AI assistants
+
+- [Equera in AI assistants](https://equera.ai/ai-assistants): how to connect an assistant to the catalogue, what it can do, and what data is stored
+- [MCP server](https://mcp.equera.ai/mcp): search listings with dates and a budget, find listings by who benefits, read full details, published community impact and reviews, check and compare dates and prices, and start a booking that the traveller confirms and pays for on Equera. No sign-in. Results link to the listing and, where its host takes bookings through Equera, its booking page.
+- [Catalogue MCP server](https://mcp.equera.ai/catalogue): the same search, details, impact, reviews and date checks, read only, with no booking tools; every result links to Equera's own site. This is the address for ChatGPT.
+- [Server card](https://mcp.equera.ai/mcp/server-card): the server's name, icon and address
+
+## Company
+
+- [About Equera](https://equera.ai/): what Equera does and who it works with
+- [Contact](https://equera.ai/contact)
+- [Privacy Policy](https://equera.ai/privacy-policy)
+- [Terms of Service](https://equera.ai/terms-of-services)
