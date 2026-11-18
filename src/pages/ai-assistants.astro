@@ -1,0 +1,253 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE } from '@/config/site';
+
+const tools = [
+  {
+    name: 'Search listings',
+    detail:
+      'Finds stays, experiences and multi-day trips by subject and place, and stays by kind, such as homestay or lodge. Add your dates to leave out listings that are closed and see the total for your stay. Add a budget to leave out listings above it. Each result shows its photo, price, rating and host.',
+  },
+  {
+    name: 'Find by who benefits',
+    detail:
+      'Finds listings whose host has published who benefits from a booking, for example women, schools or farmers.',
+  },
+  {
+    name: 'Get listing details',
+    detail:
+      'Reads one listing in full: what is included, the itinerary, group size, languages, cancellation terms and photos.',
+  },
+  {
+    name: 'Get community impact',
+    detail:
+      'Shows what the host has published about its impact: who benefits, how the price is shared, and its own stories, with a link to its impact report.',
+  },
+  {
+    name: 'Get traveller reviews',
+    detail: 'Shows the rating and the most recent published reviews.',
+  },
+  {
+    name: 'Check dates and price',
+    detail:
+      "Says whether your dates are open for your party, what the whole booking costs and the host's cancellation terms. It does not hold a place.",
+  },
+  {
+    name: 'Compare listings',
+    detail:
+      'Checks two to six listings for the same dates and party, side by side, with the total for each.',
+  },
+  {
+    name: 'List destinations',
+    detail:
+      'Shows the countries the catalogue covers, with the number of stays, experiences and trips in each, and their towns.',
+  },
+  {
+    name: 'Start a booking',
+    detail:
+      "Checks the listing again and gives the booking for your dates and party: the total, any deposit, and the host's cancellation terms. Where booking in the chat is available, it opens the booking form. Otherwise it gives the Equera booking page with your dates and party filled in. If the host is not taking bookings through Equera at the moment, it says so and gives the listing's page.",
+  },
+  {
+    name: 'Make a booking',
+    detail:
+      'Used by the booking form after you press the button. It makes the booking in your name. Your assistant may ask you to confirm before it runs. It appears only where booking in the chat is switched on.',
+  },
+  {
+    name: 'Check a booking',
+    detail:
+      'Used by the booking form to show whether your deposit has been paid and your booking is confirmed. It appears only where booking in the chat is switched on.',
+  },
+  {
+    name: 'Email my booking links',
+    detail:
+      'Sends one email to the address you give, with a link to each Equera booking made with it in the last 12 months. Your assistant may ask you to confirm before it sends. It appears only where this email is switched on.',
+  },
+];
+
+const examples = [
+  'Which countries does Equera cover?',
+  'Find a community-run cooking class for two people.',
+  'Show me places to stay in Musanze for two people from 10 to 12 June 2027.',
+  'Find a basket weaving experience in Kigali.',
+  'Compare three of those stays for the same dates, in euros.',
+  'Which listings have a published community impact record, and who benefits?',
+  'Book the first stay for two people on those dates.',
+];
+
+const linkClass = 'text-primary-600 underline hover:text-primary-700';
+---
+
+<BaseLayout
+  title="Equera in AI assistants - Equera"
+  description="Search Equera's community-run stays, experiences and trips from Claude, ChatGPT and other AI assistants, check dates and prices, and book on Equera."
+>
+  <article class="py-20 lg:py-32 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl sm:text-5xl font-bold text-brand-dark-purple mb-6">
+          Equera in AI assistants
+        </h1>
+        <p class="text-xl text-gray-600 mb-10 max-w-3xl">
+          Ask Claude, ChatGPT or another AI assistant to find community-run travel on Equera. The
+          assistant searches our public catalogue with your dates and budget, shows photos and who
+          benefits from a booking, and checks and compares prices. You pay on Equera.
+        </p>
+
+        <div class="text-gray-700 leading-relaxed space-y-6">
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-8 mb-2">What you can ask</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            {examples.map((example) => <li>{example}</li>)}
+          </ul>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">How to add it</h2>
+          <p>
+            Equera works with any assistant that supports the Model Context Protocol (MCP). Add a
+            custom connector and paste the address for your assistant. There are two addresses
+            because booking in the chat is available in Claude only; ChatGPT gets a read-only
+            address that gives you the Equera booking page for each listing.
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              <strong>Claude</strong> (open Customize, then Connectors, then Add custom connector):
+              <code class="inline-block rounded bg-gray-100 px-2 py-1 text-brand-dark-purple break-all"
+                >{SITE.links.mcpServer}</code
+              >
+            </li>
+            <li>
+              <strong>ChatGPT</strong> (open Settings, then Apps and connectors, then add a connector by
+              its address):
+              <code class="inline-block rounded bg-gray-100 px-2 py-1 text-brand-dark-purple break-all"
+                >{SITE.links.mcpCatalogue}</code
+              >
+            </li>
+          </ul>
+          <p>Other assistants can use either address; booking in the chat is offered in Claude only.</p>
+          <p>There is no sign-in.</p>
+          <p>
+            Every answer comes as plain text with complete links, so it works in any assistant. In
+            assistants that can show cards, results also appear as cards with photos, prices and
+            buttons.
+          </p>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">What it can do</h2>
+          <div class="grid gap-4 sm:grid-cols-2">
+            {
+              tools.map((tool) => (
+                <div class="rounded-lg border border-gray-200 p-5">
+                  <h3 class="font-semibold text-brand-dark-purple mb-1">{tool.name}</h3>
+                  <p class="text-gray-600">{tool.detail}</p>
+                </div>
+              ))
+            }
+          </div>
+          <p>
+            Prices can also be shown in your own currency, as an approximate figure beside the
+            listed price. The listed price is the price.
+          </p>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">Booking</h2>
+          <p>
+            In Claude you can start a booking in the chat. The assistant opens a booking
+            form for the listing, dates and party you chose. You check your name, email address and
+            phone number, read the price and the host's terms, tick the box and press the button.
+            Nothing is booked before you do.
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              <strong>Book:</strong> where the host takes a deposit, you pay it on Equera's own
+              booking page. Your place is held for 30 minutes. If you open the payment form, you
+              have at least 10 minutes from then, and never more than 40 minutes in all. Your
+              booking is confirmed once the deposit is paid.
+            </li>
+            <li>
+              <strong>Request to book:</strong> where there is no deposit, your request goes to the
+              host, who confirms it. Nothing is paid now. If the host has not answered within 48
+              hours, or once the day your booking starts has passed, the request expires, and we
+              email you that it has ended and nothing was charged.
+            </li>
+          </ul>
+          <p>
+            Payment is never taken in the chat. In other assistants, and for listings that cannot
+            be booked in the chat, the assistant gives you the Equera booking page with your dates
+            and party filled in, and you book there. Some hosts do not take bookings through
+            Equera; for them you get the listing's page instead.
+          </p>
+          <p>
+            Equera's booking pages and the emails about your booking are available in Arabic,
+            English, French, German, Hebrew, Khmer, Portuguese, Spanish, Swahili and Turkish. The
+            emails come in the language you booked in; the pages follow your browser's language
+            or the language of the card you clicked in the chat.
+          </p>
+          <p>
+            Lost the link to a booking? Use the link in your booking email. Where this is
+            available, you can also ask any assistant to email your booking links.
+          </p>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">Community impact</h2>
+          <p>
+            Impact information comes from the hosts. An assistant can show it only where a host has
+            chosen to publish its impact report. What you read is the host's own statement, with a
+            link to the report.
+          </p>
+          <p>
+            You can also browse the catalogue yourself at
+            <a href={SITE.links.catalogue} class={linkClass}>portal.equera.ai/products</a>.
+          </p>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">
+            What we receive and keep
+          </h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              The assistant sends us the search words, place, dates and party size it needs to
+              answer you. We keep the words of a search (what and where) for 90 days, after taking
+              out email addresses, phone numbers and web addresses. The rest of the record (the
+              filters, the result counts and the listings checked) is kept for 13 months. No name,
+              contact details, IP address, account or conversation is stored with it. Even so,
+              avoid putting personal details in a search.
+            </li>
+            <li>
+              If we switch on meaning-based search, the cleaned search words are also sent to our
+              embeddings provider (currently OpenAI) to find listings close in meaning.
+            </li>
+            <li>
+              The booking form collects your name, email address and phone number, and if you
+              choose, your country and a note for the host, and keeps the form's language. The host
+              and Equera use them to make the booking and to email you about it. They are not used
+              for other marketing. Our customer messaging provider (currently Braze) hears nothing
+              about a booking made in the chat until it is paid or confirmed, and then only its
+              steps and details under a one-way code made from your email address. For a booking
+              made on Equera's site from the assistant's link, Braze also gets your email address,
+              first name and, if given, country, and the reminder for an unpaid deposit is sent
+              through it.
+            </li>
+            <li>
+              On Equera's booking page, and only if you accept marketing cookies, Braze's web tool
+              may ask to send you notifications and records that you submitted a payment, with its
+              currency and amount, without your email address or the booking.
+            </li>
+            <li>
+              The assistant may fill in these details from your conversation. You check them before
+              sending, and nothing is sent until you press the button.
+            </li>
+            <li>Payment happens only on Equera's own booking page.</li>
+            <li>
+              If you ask for your booking links, we send one email, to the address you give.
+            </li>
+          </ul>
+          <p>
+            Bookings are handled under our
+            <a href="/privacy-policy" class={linkClass}>Privacy Policy</a>, and we record which
+            assistant a booking came from.
+          </p>
+
+          <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">Help</h2>
+          <p>
+            Questions or a problem with the connector? Write to
+            <a href={`mailto:${SITE.contact.email}`} class={linkClass}>{SITE.contact.email}</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
