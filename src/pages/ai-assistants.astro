@@ -89,7 +89,7 @@ const linkClass = 'text-primary-600 underline hover:text-primary-700';
         </h1>
         <p class="text-xl text-gray-600 mb-10 max-w-3xl">
           Ask Claude, ChatGPT or another AI assistant to find community-run travel on Equera. The
-          assistant searches our public catalogue with your dates and budget, shows photos and who
+          assistant searches our catalogue with your dates and budget, shows photos and who
           benefits from a booking, and checks and compares prices. You pay on Equera.
         </p>
 
@@ -102,9 +102,9 @@ const linkClass = 'text-primary-600 underline hover:text-primary-700';
           <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">How to add it</h2>
           <p>
             Equera works with any assistant that supports the Model Context Protocol (MCP). Add a
-            custom connector and paste the address for your assistant. There are two addresses
-            because booking in the chat is available in Claude only; ChatGPT gets a read-only
-            address that gives you the Equera booking page for each listing.
+            custom connector and paste the address for your assistant. There are two addresses:
+            Claude's can offer booking in the chat, and ChatGPT gets a read-only address that
+            gives you the Equera booking page for each listing.
           </p>
           <ul class="list-disc pl-6 space-y-2">
             <li>
@@ -121,7 +121,10 @@ const linkClass = 'text-primary-600 underline hover:text-primary-700';
               >
             </li>
           </ul>
-          <p>Other assistants can use either address; booking in the chat is offered in Claude only.</p>
+          <p>
+            Other assistants can use either address. Booking in the chat is offered in Claude only,
+            and only where we have switched it on.
+          </p>
           <p>There is no sign-in.</p>
           <p>
             Every answer comes as plain text with complete links, so it works in any assistant. In
@@ -147,8 +150,8 @@ const linkClass = 'text-primary-600 underline hover:text-primary-700';
 
           <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">Booking</h2>
           <p>
-            In Claude you can start a booking in the chat. The assistant opens a booking
-            form for the listing, dates and party you chose. You check your name, email address and
+            Where booking in the chat is switched on, which is in Claude only, the assistant opens
+            a booking form for the listing, dates and party you chose. You check your name, email address and
             phone number, read the price and the host's terms, tick the box and press the button.
             Nothing is booked before you do.
           </p>
@@ -188,10 +191,6 @@ const linkClass = 'text-primary-600 underline hover:text-primary-700';
             Impact information comes from the hosts. An assistant can show it only where a host has
             chosen to publish its impact report. What you read is the host's own statement, with a
             link to the report.
-          </p>
-          <p>
-            You can also browse the catalogue yourself at
-            <a href={SITE.links.catalogue} class={linkClass}>portal.equera.ai/products</a>.
           </p>
 
           <h2 class="text-2xl font-bold text-brand-dark-purple mt-10 mb-2">

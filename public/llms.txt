@@ -1,12 +1,6 @@
 # Equera
 
-> Equera makes community-based tourism bookable online. Its catalogue lists stays, experiences and multi-day trips run by community hosts around the world, each with a public page showing price, what is included, location and reviews.
-
-## Catalogue
-
-- [All listings](https://portal.equera.ai/products): stays, experiences and multi-day trips, filterable by country
-- [Experiences](https://portal.equera.ai/experiences): activities led by community hosts
-- [Catalogue sitemap](https://portal.equera.ai/sitemap.xml): every public listing page
+> Equera makes community-based tourism bookable online. It lists stays, experiences and multi-day trips run by community hosts around the world, with prices, what is included, location and reviews.
 
 ## For AI assistants
 

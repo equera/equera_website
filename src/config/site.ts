@@ -7,7 +7,6 @@ export const SITE = {
   links: {
     linkedin: 'https://www.linkedin.com/company/equeratravel',
     instagram: 'https://www.instagram.com/danielle_in_de',
-    catalogue: 'https://portal.equera.ai/products',
     mcpServer: 'https://mcp.equera.ai/mcp',
     mcpCatalogue: 'https://mcp.equera.ai/catalogue',
   },
