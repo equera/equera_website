@@ -5,9 +5,8 @@
 ## For AI assistants
 
 - [Equera in AI assistants](https://equera.ai/ai-assistants): how to connect an assistant to the catalogue, what it can do, and what data is stored
-- [MCP server](https://mcp.equera.ai/mcp): search listings with dates and a budget, find listings by who benefits, read full details, published community impact and reviews, check and compare dates and prices, and start a booking that the traveller confirms and pays for on Equera. No sign-in. Results link to the listing and, where its host takes bookings through Equera, its booking page.
-- [Catalogue MCP server](https://mcp.equera.ai/catalogue): the same search, details, impact, reviews and date checks, read only, with no booking tools; every result links to Equera's own site. This is the address for ChatGPT.
-- [Server card](https://mcp.equera.ai/mcp/server-card): the server's name, icon and address
+- [MCP server](https://api.equera.ai/v1/mcp): search listings with dates and a budget, find listings by who benefits, read full details, published community impact and reviews, check and compare dates and prices, and start a booking that the traveller confirms and pays for on Equera. No sign-in. Results link to the listing and, where its host takes bookings through Equera, its booking page.
+- [Catalogue MCP server](https://api.equera.ai/v1/mcp/catalogue): the same search, details, impact, reviews and date checks, read only, with no booking tools; every result links to Equera's own site. This is the address for ChatGPT.
 
 ## Company
 
