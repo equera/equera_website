@@ -7,6 +7,8 @@ export const SITE = {
   links: {
     linkedin: 'https://www.linkedin.com/company/equeratravel',
     instagram: 'https://www.instagram.com/danielle_in_de',
+    mcpServer: 'https://api.equera.ai/v1/mcp',
+    mcpCatalogue: 'https://api.equera.ai/v1/mcp/catalogue',
   },
   contact: {
     phone: '+1 (919) 924-8000',
